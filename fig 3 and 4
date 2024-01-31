@@ -1,0 +1,16 @@
+fig 3
+ggplot(NMDS_table, aes(x = NMDS1, y = NMDS2, col = Temperature)) +
+  geom_point(size = 5) +
+  scale_color_gradientn(colours = RColorBrewer::brewer.pal(11,"RdBu")[11:1])
+
+  
+fig 4
+  NMDS_table %>%
+  mutate(Longitude = ifelse(Longitude < 0, Longitude + 360, Longitude)) %>%
+  leaflet() %>%
+  addTiles() %>%
+  addCircleMarkers(~Longitude, ~Latitude, color = ifelse(
+    NMDS_table$Cluster == 1, "red", "green")) %>%
+  addPolylines(lat = c(30, 30), lng = c(160, 200)) %>%
+  addPolylines(lat = c(-43, -43), lng = c(160, 200)) 
+  
