@@ -1,0 +1,20 @@
+amp_heatmap(
+  ampvis, 
+  tax_aggregate = "Family",
+  tax_show = 20,
+ plot_values = F, 
+ plot_colorscale = "log10",
+ plot_legendbreaks = c(1, 5, 10, 20),
+ min_abundance = 0.7, 
+ max_abundance = 30,
+ normalise = T,
+ group_by = "Latitude",
+ color_vector = c( 
+   "gray97","gray76",
+   "lightsteelblue2","skyblue4",
+   "#4d034f","#6b0101")) +
+ theme(
+   axis.text.x = element_text(size=8),
+   axis.text.y = element_text(size=8),
+   legend.position = "bottom",
+   axis.ticks.x = element_blank()) 
